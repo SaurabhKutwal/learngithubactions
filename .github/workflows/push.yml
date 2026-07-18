@@ -1,5 +1,36 @@
 name: OnPush _Workflow
-on: push
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      env:
+        description: "Select Environment"
+        required: true
+        default: "QA"
+        type: choice
+        options:
+          - QA
+          - Stage
+          - Prod
+      run_tests:
+        description: "Run Automate Tests"
+        required: false
+        default: false
+        type: boolean
+
+      user:
+        description: "Who is performing"
+        required: true
+        default: "NA"
+        type: string
+
+      iteration:
+        description: "Which Iteration"
+        required: true
+        default: 0
+        type: number
 env:
   USER: test
   PASS: admin
@@ -48,3 +79,15 @@ jobs:
         run: echo "Hello ${{ env.USER }}"
       - name: Print Pass
         run: echo ${{ env.PASS}}
+
+  check-envdetails:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Environment
+        run: echo ${{ inputs.env }}
+      - name: Check Test
+        run: echo "Will Automated test run ${{ inputs.run_tests }}
+      - name: check user
+        run: echo "Hello ${{ inputs.user }}
+      - name: check iteration
+        run: echo "Iteration no ${{ inputs.iteration }}"
