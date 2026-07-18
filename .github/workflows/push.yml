@@ -18,7 +18,9 @@ jobs:
           cd myfiles
           touch test1.txt
       - name: Create second txt file
-        run: touch test2.txt
+        run: |
+          cd myfiles
+          touch test2.txt
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
