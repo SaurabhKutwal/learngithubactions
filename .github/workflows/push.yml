@@ -1,5 +1,8 @@
 name: OnPush _Workflow
 on: push
+env:
+  USER: test
+  PASS: admin
 jobs:
   first-job:
     runs-on: ubuntu-latest
@@ -37,4 +40,11 @@ jobs:
           name: Files
       - name: list files
         run: ls
-
+  Check-user:
+    needs: [produce-txt,Check-txt]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print User
+        run: echo ${{ env.USER }}
+      - name: Print Pass
+        run: echo ${{ env.PASS}}
