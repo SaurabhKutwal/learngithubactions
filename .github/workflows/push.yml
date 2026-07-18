@@ -45,6 +45,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print User
-        run: echo ${{ env.USER }}
+        run: echo "Hello ${{ env.USER }}"
       - name: Print Pass
         run: echo ${{ env.PASS}}
