@@ -92,4 +92,4 @@ jobs:
       - name: check iteration
         run: echo "Iteration no ${{ inputs.iteration }}"
       - name: Check secret
-        run: echo "secret key $${{ secrets.PASSWORD}}
+        run: echo "secret key $${{ secrets.PASSWORD}}"
