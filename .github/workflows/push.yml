@@ -8,3 +8,31 @@ jobs:
         run: echo "Hello world!"
       - name: Print Goodbye
         run: echo "Done - bye!"
+  produce-txt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create a directory
+        run: mkdir myfiles
+      - name: Create first txt file
+        run: |
+          cd myfiles
+          touch test1.txt
+      - name: Create second txt file
+        run: touch test2.txt
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Files
+          path: myfiles
+
+  Check-txt:
+    needs: produce-txt
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Files
+      - name: list files
+        run: ls
+
