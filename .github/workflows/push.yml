@@ -86,8 +86,8 @@ jobs:
       - name: Print Environment
         run: echo ${{ inputs.env }}
       - name: Check Test
-        run: echo "Will Automated test run ${{ inputs.run_tests }}
+        run: echo "Will Automated test run ${{ inputs.run_tests }}"
       - name: check user
-        run: echo "Hello ${{ inputs.user }}
+        run: echo "Hello ${{ inputs.user }}"
       - name: check iteration
         run: echo "Iteration no ${{ inputs.iteration }}"
